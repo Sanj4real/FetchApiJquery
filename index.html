@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Fetch API jquery</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<style>
+		#search
+		{
+			height: 40px;
+			border-radius: 5px;
+		}
+	</style>
+</head>
+	<body class="col-md-12">
+	        <h1>jQuery.ajax()</h1>
+	        <form style="display: none;">
+	    		<input type="text" name="search" id="search" class="form-control" placeholder="Serach Name ....">
+	    	<br>
+	    	</form>
+	     <div id="display-resources">
+	         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis, aspernatur.</p>
+	    </div>
+	        <a href="#" class="btn btn-primary" id="retrieve-resources">click Me</a>
+	      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	      <script>
+	      	$(document).ready(function() {
+	      	  $("#retrieve-resources").click(function() {
+	      	    var displayResources = $("#display-resources");
+	      	    
+	      	    displayResources.text("Loading data from JSON source...");
+
+	      	    $.ajax({
+	      	      type: "GET",
+	      	      url: "https://5e31407b576f9d0014d64561.mockapi.io/api/v1/fetchapi", // Using our resources.json file to serve results
+	      	      success: function(result) {
+	      	        // console.log(result);
+	      	        var output =
+	      	          "<table><thead><tr><th>SN</th><th>Author</th><th>Message</th></thead><tbody>";
+	      	        for (var i in result) {
+	      	          output +=
+	      	            "<tr><td>" +
+	      	            result[i].id +
+	      	            "</td><td>" +
+	      	            result[i].author +
+	      	            "</td><td>" +
+	      	            result[i].message +
+	      	            "</td></tr>";
+	      	        }
+	      	        output += "</tbody></table>";
+
+	      	        displayResources.html(output);
+	      	        $("table").addClass("table");
+	      	      }
+	      	    });
+	      	    // search button
+	      			$("form").show(2000);	
+
+	      	  });
+	      	})
+
+
+	      
+	      </script>
+	</body>
+</html>
