@@ -32,9 +32,10 @@
 
 	      	    $.ajax({
 	      	      type: "GET",
-	      	      url: "https://5e31407b576f9d0014d64561.mockapi.io/api/v1/fetchapi", // Using our resources.json file to serve results
+	      	      url: "https://5e31407b576f9d0014d64561.mockapi.io/api/v1/fetchapi", 
+	      	      
 	      	      success: function(result) {
-	      	        // console.log(result);
+
 	      	        var output =
 	      	          "<table><thead><tr><th>SN</th><th>Author</th><th>Message</th></thead><tbody>";
 	      	        for (var i in result) {
